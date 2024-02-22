@@ -12,13 +12,10 @@ class CurrentWeatherWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //tempeture area
-        tempeatureAreaWidget(),
-
+        temperatureAreaWidget(),
         const SizedBox(
           height: 20,
         ),
-        // more details - windspeed, humidity, clouds
         currentWeatherMoreDetailsWidget(),
       ],
     );
@@ -35,8 +32,9 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
+                color: CustomColors.cardColor,
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: Image.asset("assets/icons/windspeed.png"),
             ),
             Container(
@@ -44,8 +42,9 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
+                color: CustomColors.cardColor,
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: Image.asset("assets/icons/clouds.png"),
             ),
             Container(
@@ -53,8 +52,9 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
+                color: CustomColors.cardColor,
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: Image.asset("assets/icons/humidity.png"),
             ),
           ],
@@ -98,7 +98,7 @@ class CurrentWeatherWidget extends StatelessWidget {
     );
   }
 
-  Widget tempeatureAreaWidget() {
+  Widget temperatureAreaWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -113,22 +113,26 @@ class CurrentWeatherWidget extends StatelessWidget {
           color: CustomColors.dividerLine,
         ),
         RichText(
-          text: TextSpan(children: [
-            TextSpan(
+          text: TextSpan(
+            children: [
+              TextSpan(
                 text: "${weatherDataCurrent.current.temp!.toInt()}°",
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 68,
                   color: CustomColors.textColorBlack,
-                )),
-            TextSpan(
+                ),
+              ),
+              TextSpan(
                 text: "${weatherDataCurrent.current.weather![0].description}",
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
                   color: Colors.grey,
-                )),
-          ]),
+                ),
+              ),
+            ],
+          ),
         )
       ],
     );
